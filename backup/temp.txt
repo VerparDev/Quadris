@@ -1,0 +1,23 @@
+std::unique_ptr<Level> Grid::makeALevel(int level) {
+  if (level == 0) {
+    return make_unique<Level>(Zero());
+  } else if (level == 1) {
+    return make_unique<Level>(One());
+  } else if (level == 2) {
+    return make_unique<Level>(Two());
+  } else if (level == 3) {
+    return make_unique<Level>(Three());
+  } else if (level == 4) {
+    return make_unique<Level>(Four());
+  }
+}
+
+void Grid::levelUp() {
+  if (levelAt == 4) return;
+  currLevel = makeALevel(++levelAt);
+}
+
+void Grid::levelDown() {
+  if (levelAt == 0) return;
+  currLevel = makeALevel(--levelAt);
+}
